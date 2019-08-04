@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -11,11 +11,17 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const FlatButton = () => {
+export interface Props {
+    children: React.ReactNode
+}
+
+const FlatButton: React.FC<Props> = (props) => {
     const classes = useStyles();
     return (
         <Button variant="contained" className={classes.button}>
-            Default
-      </Button>
+            {props.children}
+        </Button>
     )
-}
+};
+
+export default FlatButton;
